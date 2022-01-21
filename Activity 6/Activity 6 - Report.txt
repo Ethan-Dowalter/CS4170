@@ -1,0 +1,39 @@
+Dr. Welch,
+
+ 
+
+I've worked up this week's activity, and here are my results:
+
+
+
+ 
+
+As you can see, there is only slight confluence of results in regards to which features are selected in the decision trees. DOCK3 appears as the root once, ZBTB20 appears twice, once as the root and once as the right node, and RNF43 appears twice as well, once as the root and once as the left node. To me, this says that there are no overwhelmingly powerful features to classify with, but instead a number of features that are just okay. But, we kind of already knew that from activities from the past weeks.
+
+ 
+
+I should also note that I used a specific random seed in my call to .sample to split up the dataset: 65536.
+
+ 
+
+Then, here are the average values for each metric from the three different trials:
+
+
+
+ 
+
+To me, these results seem underwhelming. The average accuracy is only 69.75%, which is less than the 72.84% from last week. One thing that is very good is that there were no false positives in any of the three trials, which means all samples that were classified as positives were correct. However, there are a rather large amount of false negatives. The average False Omission Rate is rather high, at 31.64%. So the features that these decision trees used struggled to effectively separate the cancer samples from the non-cancer samples.
+
+ 
+
+There are several ways in which I can see these results being improved. One of which is of course using a deeper decision tree. Another is to simply use a different random sampling, because it is very possible this could just be a bad combination. And one other idea is to use a higher k value for the k-fold cross-validation. It seems like using a slightly larger training set that is say 90% of the data instead of 66.7%, like in the case of k=10, would help yield more accurate results. However, this would mean we would have relatively few test samples (about 16). If only we had more data to analyze! 
+
+ 
+
+As always, I've attached everything in a zip file.
+
+ 
+
+Thank you,
+
+Ethan Dowalter
