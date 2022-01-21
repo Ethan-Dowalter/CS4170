@@ -1,0 +1,21 @@
+Dr. Welch,
+
+ 
+
+Here's my report for part 1 of the activity for this week:
+
+Goals and objectives:
+Learn a new heuristic, the Phi Function, for classifying samples
+Implement the new heuristic on the root node of a new decision tree
+Summary of results:
+I found the most useful feature to classify by given this new Phi function is the DOCK3 mutation, with ZBTB20 and RNF43 coming in second and third, respectively. 
+Summary of methods:
+I modified a function I made in Activity 4 (part 2) to suid my needs here. Instead of simply computing TP - FP, which was essentially C - NC, I added all the additional columns and computed their values. There was only one additional piece I needed to add to aid in the computations, and that was getting the total number of positive and negative samples in the dataset that is sent to this function. After that, it was just a matter of renaming the columns from the old function and adding their interdependencies, since all of the later columns in the table depend on the earlier ones as the activity guide states.
+Key results:
+
+Here is my table for the top 10 features which maximize the Phi Function. This is the result of feeding it the entire dataset, not a random subsample. Also, all the columns which are percentages between 0 and 1 (from P_L to P(NC | t_R)) were multiplied by 100 for ease of understanding. Note, this change influences the overall value of the last two columns, Q(s | t) and Phi(s, t), but does not affect the relative ranking of the features.
+Discussion:
+This new heuristic seems fairly complicated and I'm not quite sure I've got my head wrapped around it yet. However, it is very promising to see confluence in the top features, because only 3 features in the top 10 are unfamiliar to me (LARP4B, KIAA0195, and TYP23C). All the rest have popped up in previous activities before, which is yet another sign that those are the most influential when trying to test for cancer. It is also interesting that DOCK3's Phi value is 14.6% (193872.89/169181.53) greater than the one in second place. This is quite a large difference and puts DOCK3 solidly in first place.
+Thank you,
+
+Ethan Dowalter
