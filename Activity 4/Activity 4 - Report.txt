@@ -1,0 +1,45 @@
+Dr. Welch,
+
+ 
+
+Figure 1 here shows the updated Feature Table after adding an additional column for "TP - FP" and sorting by that column in descending order. As I believe I said at the end of last week's report, the feature which maximizes the value for "TP - FP" is DOCK3, and its value is 12. 
+
+
+
+Figure 1: The top 10 features in the Feature Table when sorted by "TP - FP".
+
+ 
+
+ 
+
+After selecting DOCK3 to be our classifier, I separated the samples into two lists as shown in Figure 2 here.
+
+
+
+Figure 2: Shows the lists of samples for those that have the DOCK3 mutation and those that do not.
+
+ 
+
+ 
+
+Then finally I made the confusion matrix, as shown in Figure 3, to represent the classification of all samples based on the DOCK3 mutation.
+
+
+
+Figure 3: The confusion matrix for classifying the data based on DOCK3.
+
+ 
+
+ 
+
+The DOCK3 mutation is the most useful feature to classify by, but it still incorrectly classifies 44/162 (27.16%) of the samples. This means that it is an inadequate test by itself when testing for cancer. Because of this, we are going to have to use several other mutations in a decision tree to increase our accuracy for diagnoses. I am very optimistic about how accurate we can get the predictions after developing a decision tree that is several layers high, which makes me excited about the work for the coming weeks!
+
+ 
+
+Also, I've attached my source code, data, and screenshots as always.
+
+ 
+
+Thank you,
+
+Ethan Dowalter
