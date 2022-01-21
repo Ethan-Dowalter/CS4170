@@ -1,0 +1,27 @@
+Professor Welch,
+
+ 
+
+After completing the analysis of the data, I have come to several useful conclusions. The first one being, there does not seem to be any significant outliers in the dataset. Upon generating the scatterplots, it does appear that the vast majority of data points are near the bottom of both plots, and as one goes up the y-axis, the data points thin out. Neither of the plots show data points that significantly break away from this pattern, so by visual inspection, I found no outliers in the data.
+
+ 
+
+My second, and probably most important conclusion was that the feature table when sorted by the 'C' column showed some very interesting patterns. When the large feature table is sorted by the 'C' column, all of the top 10 mutations have relatively few non-cancer individuals that have them. This means that all these mutations have a decent chance that they are linked, or at least highly correlated, with having cancer. The very top one is the most promising, DOCK3, because of the 12 individuals that have that mutation, all 12 of them have cancer! I would say this piece of evidence definitely warrants some further investigation!
+
+ 
+
+My last conclusion was that the '%C - %NC' and '%C / %NC' columns felt a little bit useless. I don't know if this would necessarily be the case for everybody, but for me personally, those columns just seemed redundant. The '%C' and '%NC' columns would have been enough for me to draw conclusions from because I can scan down the two columns and quickly intuit/visualize the proportion of cancer to non-cancer individuals just from those percentages. It is easier for me to understand plain percentages than a difference or ratio of percentages. And going along with this idea, the tables that are sorted by those columns do not seem to show anything that the tables sorted by '%C' and '%NC' wouldn't show. That being said, redundancy is not a bad thing, and I can understand having those columns included in this assignment.
+
+ 
+
+An additional note about how I calculated the '%C / %NC' column: if %NC was equal to 0, then I divided by 0.000001 (one millionth) to avoid dividing by 0.
+
+ 
+
+I've attached everything inside of a zip file. If I missed anything or you have any other questions for me, please let me know. 
+
+ 
+
+Thank you,
+
+Ethan Dowalter
