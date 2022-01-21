@@ -1,0 +1,57 @@
+Dr. Welch,
+
+Here's my report for Activity 11 for this week:
+Goals and objectives:
+
+Understand how support and confidence are calculated for association rules
+Find features in the dataset which are correlated using association rule mining techniques
+
+Summary of results:
+
+For a given association rule, A implies B or A => B, support can be calculated by dividing the number of samples that have both features A and B by the total number of samples. To calculate confidence, you divide the number of samples that have both features A and B by the number of samples that have feature A. Applying these rules to feature triplets may seem impossible at first, but in our case you can simply substitute a pair of features for the antecedent, yeilding (A B) => C.
+I found the size of F1 (the set of features with 4 or more samples) to be 116 out of 1410 features.
+I found the size of F2 (the set of frequent feature pairs with 4 or more samples having both feature A and B) to be 122, or 61 unique pairs since the pairs (A, B) and (B, A) are counted as separate. The maximum number of samples in a given pair was 8, and that occurred in only one pair: (ACVR2A, RPL22) / (RPL22, ACVR2A).
+I found the size of C3 (the set of feature triplets found by combining pairs from F2 that have 1 feature in common) to be 409.
+I found the size of F3 (the set of frequent feature triplets found by applying the a priori principle to C3) to be 138, or 46 unique triplets since the triplets (A, B, C), (B, C, A), and (C, B, A) are counted as separate. The maximum number of samples in a given triplet was 4, and that occurred in 13 unique triplets (39 with the different combinations). 
+Summary of methods:
+
+I wrote several different methods to help me during this activity. One is called allPairs(), which takes a tuple of arbitrary size and returns a list of all possible pairs that are a subset of that tuple. Another is called checkPair(), which takes a pair of features and a threshold value and returns true if both features in the pair occur at least 'threshold' number of times in the dataset, otherwise it returns false. Then, I wrote functions which return the number of samples that are in the intersection of either a pair or triple.
+From there, I followed the handout to compute F1, F2, C3, and then finally F3.
+
+Key results:
+
+This is the table which shows F2 ranked by Support:
+
+This table shows F2 ranked by Confidence:
+
+This table shows F2 ranked by Support * Confidence after applying minimum thresholds for Support and Confidence at 0.031 and 0.6, respectively:
+
+This table shows F3 ranked by Support:
+
+This table shows F3 ranked by Confidence:
+
+This table shows F3 ranked by Support * Confidence after applying minimum thresholds for Support and Confidence at 0.025 and 0.7, respectively:
+
+This shows the size of all the calculated sets for this activity:
+
+This list shows all 13 unique triplets I found with 4 samples that occur in each feature:
+(TVP23C, DOCK3, UBR5)
+(TVP23C, DOCK3, RPL22)
+(TVP23C, ACVR2A, RPL22)
+(TVP23C, UBR5, RPL22)
+(ZBTB20, DOCK3, UBR5)
+(ZBTB20, ACVR2A, RPL22)
+(ZBTB20, RPL22, DONSON)
+(DOCK3, LARB4B, RNF43)
+(DOCK3, LARP4B, PGM5)
+(DOCK3, ACVR2A, RNF43)
+(ACVR2A, UBR5, RPL22)
+(ACVR2A, AKAP7, RPL22)
+(ACVR2A, RPL22, CDH24)
+
+Discussion:
+
+The 13 triples listed above almost certainly contain the strongest features for predicting cancer in the dataset. Between the 13 triplets, there are only 11 features: TVP23C, DOCK3, UBR5, RPL22, ACVR2A, ZBTB20, DONSON, LARP4B, PGM5, AKAP7, and CDH24.
+If I had to advise a cancer lab to research particular mutations connected with cancer, I would recommend them these 11 mutations.
+Thank you,
+Ethan Dowalter
