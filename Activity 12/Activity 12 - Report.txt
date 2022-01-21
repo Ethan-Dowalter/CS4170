@@ -1,0 +1,41 @@
+Dr. Welch,
+
+ 
+
+Here's my report for Activity 12 for this week:
+
+Goals and objectives:
+Find features in the dataset which are highly correlated with having cancer using deep association rule mining techniques
+Determine if any of the selected mutations are known to be associated with cancer
+ 
+Summary of results:
+ 
+Without changing the parameters of the a priori principle, I found...
+The size of F4 to be 96 association rules, or 24 unique feature quadruplets since each unique quadruplet has 4 ways it can be expressed with a single item consequent.
+The size of F5 to be 35 association rules, or 7 unique feature quintuplets since each unique quintuplet has 5 ways it can be expressed with a single item consequent.
+The size of F6 to be just 6 association rules, or 1 unique feature sextuplet since each unique sextuplet has 6 ways it can be expressed with a single item consequent. 
+This means that F6 is the absolute furthest we can mine for association rules without changing the parameters, since F7 will yield an empty set.
+The final sextuplet I found was made up of the following features: TVP23C, ZBTB20, DOCK3, ACVR2A, UBR5, and RPL22.
+Summary of methods:
+ 
+I chose to keep the same a priori principle as last week for filtering tuples when generating F_n. I checked every possible pair from the tuple and made sure that each pair had an intersection of at least 4 samples, if at least one pair failed that test, then that tuple would not be added to F_n.
+I was able to translate my process of making F3 last week into a set of generalizable functions, which I used to make F4, F5, and F6. First, I generalized my intersect2() and intersect3() functions and made an intersectN() function, which takes a tuple of any number of features and computes the number of samples in the intersection of all of them. I made a function makeAllTuplets(), which takes a list of feature tuples, F_n, and generates the set of all tuples that would be in C_n+1. Then, I have a function called convertCtoF(), which generates F_n using C_n, which is taken as a parameter, using the a priori method discussed above. I also included a function called filterSamples(), which removes any feature tuples/association rules from a list without at least 'threshold' number of samples, which is passed as a parameter. I used this function to remove any association rules with 0 samples before going on to the next iteration of F_n, that way I could avoid divide by zero errors. 
+ 
+Key results:
+ 
+This table shows the length of C4 (146) and F4 (96), as well as the top 10 association rules/feature quadruplets in F4 when sorted by Support * Confidence:
+
+This table shows the length of C5 (46) and F5 (35) , as well as the top 10 association rules/feature quintuplets in F5 when sorted by Support * Confidence:
+
+This table shows the length of C6 (7) and F6 (6), as well as all the association rules/feature sextuplets in F6:
+
+ 
+Discussion:
+ 
+Of the final 6 features in F6, TVP23C, ZBTB20, DOCK3, ACVR2A, UBR5, and RPL22, 3 of them (DOCK3, ZBTB20, and ACVR2A) were in my list of features to check out after doing deep classification analysis (Activity 10). And they all showed up in last week's activity, which makes sense because in order for a feature to make it to F6, they will likely be at the top of the list in F3. So, using https://www.ncbi.nlm.nih.gov/ to look at which tissues these mutations most frequently occur in once more, I still believe that we could be studying samples with brain cancer, but testicular and thyroid cancer seem almost equally as likely as well. TVP23C ZBTB20 DOCK3 ACVR2A UBR5 RPL22
+ 
+Another possibly interesting note, for the single unique sextuplet in F6, the six features all shared one sample in common, which turned out to be C39.
+ 
+Thank you,
+
+Ethan Dowalter
