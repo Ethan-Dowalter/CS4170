@@ -1,0 +1,47 @@
+Dr. Welch,
+
+ 
+
+It turns out that ranking the features by "TP - FP" and ranking by accuracy yield the same top feature: DOCK3! Here are my results for the top 10 features when ranked by accuracy:
+
+
+
+The first thing that I notice here is that I've seen several of these mutations before. DOCK3 obviously, as it is the root of the decision tree, ACVR2A was the feature I used to classify the right node in the decision tree, UBR5 was used to classify the left node, and I remember RNF43 from Activity 3. These are like the "all stars" of all the features because they are the most effective at classifying other samples.
+
+ 
+
+For part 2 of the activity, I came up with the following confusion matrix:
+
+ 
+
+
+
+ 
+
+Then, I used those values to calculate all of the metrics you wanted, plus the additional ones that were on the wiki page (for completion's sake):
+
+ 
+
+
+
+ 
+
+So, it seems like the decision tree with 2 levels does no better than just classifying based on DOCK3, because they share the same accuracy value of 72.84% ( (13+105)/(13+43+1+105) ). I think this is not a big deal though, because I did not design the 2-level decision tree to be strictly more accurate. Since I decided to split up the already "pure" node on the left with the 12 cancer samples with DOCK3, that hurt the overall accuracy of the decision tree. In fact, it hurt the accuracy by exactly the same amount that the other node helped.
+
+ 
+
+If I went back and changed the decision tree to not classify any further once it reaches a "pure" node, I would have instead gotten 18 TP (instead of 13), 38 FN (instead of 43), 1 FP, and 105 TN. This would improve the accuracy to 75.93%, which is a marked improvement. However, I left the decision tree as-is for this activity.
+
+ 
+
+The sensitivity was 23.21%, which is not very high. Ideally, we would want a test that could correctly identify a lot more than 23.21% (13/13+43) of the true positives. The specificity however, was almost perfect, at 99.06% (105/105+1). This is because the mutations we used to classify only had one sample without cancer between the three of them. The precision was also quite good, at 92.86% (13/13+1), which means that we classified with mutations that non-cancer samples very rarely had (only 1). The negative predictive value was 70.95% (105/105+43), which means that many cancer samples ended up being classified as non-cancer. The miss rate was 76.79% (43/13+43), which is the complement of the sensitivity. The fallout was 0.94% (1/105+1), which is the complement of specificity. The false discovery rate was 7.14% (1/13+1), which is the complement of precision. Finally, the false omission rate was 29.05% (43/105+43), which is the complement of negative predictive value. Because these last four values are simply complementary to the previous 4, their values effectively lead to the same conclusions as the previous 4. That is not to say that they are not valuable though, because I think it is useful to see the tradeoff between two complementary values and how when one changes, it affects the other in an equal and opposite way.
+
+ 
+
+As always, I've attached my work in a zip folder.
+
+ 
+
+Thank you,
+
+Ethan Dowalter
