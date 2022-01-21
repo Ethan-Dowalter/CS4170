@@ -1,0 +1,30 @@
+Dr. Welch,
+
+Here's my report for part 2 of the activity for this week:
+Goals and objectives:
+Understand the components of the Phi Function and what they optimize for
+Understand how the classification rules change when constructing a decision tree using the Phi Function
+Compare this week's decision tree using the Phi Function with last week's decision tree using TP - FP
+Summary of results:
+The Phi Function is made up of two key parts, each of which optimize for different things. The first part is the 2 * P_L * P_R, which means 2 times the probability a sample is sent to the left node times the probability a sample is sent to the right node. This means this expression is maximized when the samples at a node are split evenly between the two child nodes. The other part, Q(s | t), roughly translates to a measure of how pure a node is. This expression is maximized when a node has only one type of sample, either cancer or non-cancer. So, the Phi Function multiples these expressions together to result in a function which optimizes for both node purity and an equal split of the samples between the child nodes.
+The classification rules are discussed in more detail in section 4: Key results.
+After performing 3-fold cross validation, this week's Phi Function yielded an average accuracy of 72.22%, whereas the TP - FP version yielded an average accuracy of 69.75% on the same samplings.
+Summary of methods:
+After completing part 1 of this activity, I made some further modifications to my makePhiDecisionTree() function. Namely, I added leaf nodes to it which automatically have the correct classification stored in their data section. So internally, the decision tree already has the classification built into it, which made writing my phiClassify() function much simpler.
+I also added logic to the function which detects pure nodes and stops if it hits one. This was important because the root node often produces pure nodes to the left of it. When deciding a feature to classify with in a pure node, with the Phi Function, the decision for a feature becomes arbitrary. This is due to the fact that leaf nodes get classified based on whether they have more cancer samples or non-cancer samples. But in a pure node, both leaf nodes are guaranteed to have more cancer samples, thus this simplification can be made.
+This enabled me to finish constructing the decision tree which is built from the entire dataset (as seen in the next section).
+Then, I kept the same random samples and random seed I used in Activity 6 to perform 3-fold cross validation with my new makePhiDecisionTree() function.
+Key results:
+This figure shows my sketch of the decision tree using the entire dataset and the Phi Function to determine the best feature at each node. As I mentioned above, I encoded the leaf nodes to be either C or NC, and pure nodes get caught and are also encoded to be either C or NC depending on which child the node is (C if it is a left child, NC if it is a right child).
+
+This figure shows my classification rules for the above decision tree:
+
+This figure shows my classification rules in general, for any decision tree based on the Phi Function:
+
+This figure shows the computed average metrics as a result of my 3-fold cross validation:
+
+Discussion:
+The Phi Function outperforms the TP - FP heuristic by about 3.5% (72.22/69.75) with the given random sampling of the dataset. I tried several other random seeds this week and ended up with similar results, so I do believe this is a decent average and is not skewed too far in either direction. In all cases I tried, I found the Phi Function to outperform TP - FP by some amount, which I was pleasantly surprised by. The Phi Function is certainly a more sophisticated heuristic, so I was glad to see that it could outperform our old model, even if it was not by a huge margin. 
+Another notable pattern I found was that the sensitivity almost doubled when using the Phi Function. Last week's average sensitivity was 12.7%, whereas this week's average sensitivity was 24.6%. This means that the Phi Function more accurately identifies cancer samples, because the average value for TP went from 2.33 to 4.33.
+Thank you,
+Ethan Dowalter
