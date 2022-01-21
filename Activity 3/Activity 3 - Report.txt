@@ -1,0 +1,67 @@
+Dr. Welch,
+
+ 
+
+I apologize. I did not realize the importance of providing the report in the email submission.
+
+ 
+
+Here are my figures I came up with for this activity:
+
+ 
+
+
+
+Figure 1: The confusion matrices I calculated for the RNF43 and RPL23 mutations, respectively.
+
+ 
+
+
+
+Figure 2: Stacked bar charts showing the data from the confusion matrices for the RNF43 and RPL23 mutations, respectively.
+
+ 
+
+
+
+Figure 3: Donut charts showing the data from the confusion matrices for the RNF43 and RPL23 mutations, respectively.
+
+ 
+
+ 
+
+Then, I have my answers for questions 4-6 from the activity:
+
+ 
+
+4. Which of the two mutations listed above is more useful for classification of the C and NC samples? Explain your answer by using the results of questions 1, 2, and 3.
+
+A: I believe the RNF43 mutation is slightly more useful for classifying this dataset. I've come to this conclusion after inspecting the donut charts, because the charts show that RNF43 has a higher percentage for TN (64.8% vs 64.2%) and TP (6.8% vs 5.6%) and a lower percentage for FN (27.8% vs 29.0%) and FP (0.6% vs 1.2%). This means that the RNF43 mutation correctly classifies 71.6% (64.8% + 6.8%) of the samples, whereas the RPL23 mutation correctly classifies 69.8% (64.2% + 5.6%) of the samples. Overall, the difference is not much so I would call them roughly equal, but RNF43 does hold a slight numerical advantage.
+
+ 
+
+5. If we use the quantity “TP – FP” to classify samples, which feature would be the most useful for classifying samples? (I.e., which genetic mutation yields the maximal value for the quantity “TP – FP”?) What is the maximum value of “TP – FP” across all features?
+
+A: If we use the quantity TP - FP to classify samples, that is equivalent to using C - NC from last week's data. There really is no need to write another algorithm to classify the data in this new way, because it is simply reinterpreting the data we already sorted last week. When we classify the data from a given mutation, the number of cancer samples with that mutation is the True Positive, the number of non-cancer samples with that mutation is the False Positive, the number of cancer samples without the mutation is the False Negative, and the number of non-cancer samples with that mutation is the True Negative. So, if we classify by TP - FP that is effectively taking the C and NC columns from last week's data and subtracting them: C - NC. Given this fact, I simply need to go back and look back at the col2 table from last week's activity and see the DOCK3 mutation has 12 cancer samples and 0 non-cancer. There are no other mutations with this many cancer samples, so that means that using DOCK3 to classify the data maximizes TP - FP to a value of 12.
+
+ 
+
+6. If we use the quantity “%TP - %FP” to classify samples, which feature would be the most useful for classifying samples? (I.e., which genetic mutation yields the maximal value for the quantity “%TP - %FP”?) What is the maximum value of “%TP – %FP” across all features?
+
+A: Similarly, if we used the quantity %TP - %FP to classify the samples, where %TP is the number of cancer samples correctly classified divided by total samples (162), and %FP is the number of non-cancer samples that are incorrectly classified divided by total samples (162), the DOCK3 mutation would again come out on top. The reason for this is because DOCK3 is the only mutation in the data with the maximum number of cancer samples (12) AND the minimum number of non-cancer samples (0). The number of cancer samples it would correctly classify would be 12, then divided by the total 162 equals 7.4%. And the number of non-cancer samples it incorrectly classifies is 0, divided by the total 162 equals 0%. So, classifying by the DOCK3 mutation again maximizes the value of %TP - %FP to a value of 7.4%.
+
+ 
+
+ 
+
+With all this information in mind, we are still far from being able to diagnose cancer based on a genetic test. However, when classifying the data using the DOCK3 mutation, it correctly classifies 12 of the individuals with cancer (out of 56) and all 106 individuals without cancer. This means that it correctly classifies 72.8% of the samples in the dataset. This is the best single test I can come up with so far, and a 72.8% is nowhere near the margin of error needed for accurate diagnoses. So, I believe if we use this test in combination with several other of the mutations with a high number of individuals with cancer into a much larger "meta-test," we can improve the accuracy greatly. Since I've already looked at next week's material, I know that is already the direction we are heading, so I'm excited to see how far these "decision trees" which take into account multiple mutations can take us!
+
+ 
+
+Again, sorry for not including a report last time.
+
+ 
+
+Thank you,
+
+Ethan Dowalter
