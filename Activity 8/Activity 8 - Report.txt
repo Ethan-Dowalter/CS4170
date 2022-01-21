@@ -1,0 +1,49 @@
+Dr. Welch,
+
+ 
+
+Here's my report for Activity 8 for this week:
+
+Goals and objectives:
+Understand the concepts of entropy, information, and information gain
+Understand what the Gain(s) function optimizes for
+Compare this week's decision tree using the Information Gain function with the Phi Function and TP - FP
+Summary of results:
+The Gain(s) Function or Information Gain Function is defined by the entropy at node t minus the entropy of a candidate split at node t. Entropy in this context is analogous to noise or disorder in the data, and information is analogous to signal, meaning the two are inversely proportional. Since the entropy at a given node t is constant but the entropy of its children nodes depends on the partition, this equation is maximized when the entropy of a candidate split at node t is minimized, i.e. the partition has the minimum amount of entropy or disorder. In essence, this means that the Gain(s) Function optimizes for the highest amount of information gain from a given partition, which is equivalent to saying that it optimizes for the greatest reduction in entropy.
+After performing 3-fold cross validation, this week's Gain(s) Function yielded an average accuracy of 70.99%, whereas the Phi Function yielded an average accuracy of 72.22% and the TP - FP version yielded an average accuracy of 69.75% on the same samplings.
+Summary of methods:
+This activity was very straightforward to implement, given that the Gain(s) Function is so similar to the Phi Function. I made a new infoGain() function which is almost identical to my phiFunction() from last week, with just a few modifications for the new values I needed to compute. Then, I copied my makePhiDecisionTree() function from last week to make a new makeInfoGainDecisionTree() function. The only difference there was that instead of calling phiFunction() to select the best feature, I changed it to infoGain().
+Then, I kept the same random samples and random seed I used in Activity 6 and 7 to perform 3-fold cross validation with my new makeInfoGainDecisionTree() function.
+Key results:
+This figure shows my sketch of the decision tree using the entire dataset and the Information Gain Function to determine the best feature at each node. It turns out that I get the exact same decision tree as last week using the Phi Function. 
+
+This figure shows the top 10 features at each node from the previous decision tree, with the root node first and then the right child:
+
+This figure shows my specific classification rules for the above decision tree:
+
+This figure shows my classification rules in general, for any decision tree based on the Information Gain Function (same rules as with Phi Function):
+
+This figure shows the decision tree from the 1st fold from my 3-fold cross validation:
+
+This figure shows the top 10 features at each node from the previous decision tree, with the root node first and then the right child:
+
+This figure shows the decision tree from the 2ndfold from my 3-fold cross validation:
+
+This figure shows the top 10 features at each node from the previous decision tree, with the root node first and then the right child:
+
+This figure shows the decision tree from the 3rd fold from my 3-fold cross validation:
+
+This figure shows the top 10 features at each node from the previous decision tree, with the root node first and then the right child:
+
+This figure shows the computed average metrics from my 3-fold cross validation:
+
+Discussion:
+The Gain(s) Function fails to outperform the Phi Function with the given random sampling of the dataset, with an average accuracy of 70.99% down from 72.22%. It does still outperform TP - FP though, which had an average accuracy of 69.75%. With this given random sampling, the Gain(s) Function lies directly in between the Phi Function and TP- FP when judged by average accuracy. I tried several other random seeds this week and ended up with similar results, but sometimes the Gain(s) Function would actually outperform the Phi Function, it just depends on the random sampling. For this report however, I decided to stick with the same random seed that I have used in my past reports for the sake of consistency. 
+Just based on this activity, there seems to be no clear winner as far as the best way to build a decision tree, but there does seem to be a clear loser, and that is TP - FP. The Gain(s) Function and Phi Function both have similar performace when used with 3-fold cross validation, and generally produce an average accuracy in the 70-75% range, whereas the TP - FP is usually 2-4% below that.
+I also wanted to ask you one additional question, would you rather me put my reports in a word doc or are you fine with me putting them directly in the email like I have been doing?
+
+ 
+
+Thank you,
+
+Ethan Dowalter
