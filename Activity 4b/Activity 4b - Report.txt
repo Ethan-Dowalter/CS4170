@@ -1,0 +1,26 @@
+Dr. Welch,
+
+I've generated a decision tree as assigned in the activity for this week, so here is my sketch of it:
+
+
+As the sketch indicates, I first classify the data based on the DOCK3 mutation (last week's activity). Once the samples are split up, I then take the positive samples and classify those based on the UBR5 mutation, because that is the mutation which I found to maximize TP - FP for that set of samples. Normally, it would be DOCK3 which maximizes TP - FP for the positive group, but to avoid redundancy I eliminated that mutation because it was already used and would no longer yield any valuable information with that set of samples since they are all homogenous on that dimension. Then, I take the samples which tested negative for DOCK3 and classify those based on ACVR2A because that is the mutation which I found to maximize TP - FP for that set of samples. 
+
+In my python code, I made lists of samples which represent each of the nodes (excluding the root). The samples that go to the UBR5 node are in the list called groupA, then from there they get classified again and get split up into the lists groupA1 and groupA2. Similarly, the samples that go to the ACVR2A node are in the list called groupB, and they then get classified again and get split up into the lists groupB1 and groupB2. The samples of each group are printed in the next two figures.
+
+I know that all the samples in groupA were already correctly classified, but I decided that it would be worth it to continue deeper with the decision tree, despite the possibility of hurting the results. My thinking was that only using one test to classify a sample seems like not enough certainty to me. Also, I was just curious what the results would be.
+
+Now, here is the information I gathered about the UBR5 internal node, including the top 10 features, a list of samples that have the UBR5 mutation, a list of samples that do not have the UBR5 mutation, and the confusion matrix.
+
+
+
+Here is the same information but for the ACVR2A internal node:
+
+
+Based on this decision tree, I found that the samples C1, C10, C50, NC5, and NC15 were all classified as NC. So given those five samples, my decision tree has a success rate of only 40% or 2/5. 
+
+On the whole, this decision tree correctly classifies 13/56 positive samples and 105/106 of the negative samples, as opposed to last week's 1-node decision tree which correctly classified 12/56 positive samples and 106/106 negative samples. This means that both models correctly classify the same number of samples: 128/162 or 79.0%.
+
+I've attached my code and figures in a zip file as I usually do.
+
+Thank you,
+Ethan Dowalter
