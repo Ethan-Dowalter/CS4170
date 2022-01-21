@@ -1,0 +1,41 @@
+Dr. Welch,
+
+ 
+
+Here's my report for Activity 9 for this week:
+
+Goals and objectives:
+
+Understand the 2 major steps in building a random forest
+Understand how the random forest classifies a sample
+Summary of results:
+
+The two major steps in building a random forest are first building a decision tree using a bootstrapped dataset, and then repeating that until the desired amount of trees is reached. It is important to note that each decision tree uses a different bootstrapped dataset, and that each tree uses a random sample of features from the total (referred to as n) to construct the decision nodes. 
+The random forest classifies a sample through "bagging" or bootstrap aggregation. It runs the sample through each decision tree in the random forest and keeps track of how many trees classify it as C and how many classify it as NC. Then, it checks to see which it was classified as more often. Basically, it operates as a majority voting system, where each tree gets a "vote" on what to classify the sample as, and whichever class gets the majority vote wins out.
+The average size for the out-of-bag datasets was exactly 59 samples, or 36.4% of the total, which means that on average, the bootstrapped datasets contained 103 out of the 162 unique samples, or 63.6%.
+The results I got from constructing a random forest with the n parameter set to 38 were unsatisfactory, and a classifier that guesses all samples as NC performs almost identically (discussed more in the Discussion section).
+Summary of methods:
+I decided to use the Phi Function as my method of constructing decision trees for no other reason than I think it has the coolest name of the three methods we had to choose from.
+I took the code that I had previously written in my makePhiDecisionTree() function, and made a new function called makeRandPhiDecisionTree(). The modifications I made to it were that it now takes two new parameters, an "n" value and a random seed. The n value is how many random samples that it will choose from to build a certain decision node, and the random seed is used in the random sampling function which accomplishes that. I also made it so that at each decision node, a different n random features are selected. Besides that change, the function remained the same. It still only builds a depth 2 tree and has all its leaf nodes labelled as C or NC.
+I also built functions which make a bootstrapped dataset from a whole dataset and a random seed called Bootstrap(), and a function to classify a sample given an entire random forest called randForestClassify() which work as described above.
+Key results:
+Here are the 25 resulting decision trees where each decision node selects sqrt(1410) = 38 random features to decide with, listed in a pre-order fashion (root, left tree, right tree):
+
+For the specific samples C1, C10, C50, NC5, and NC15 I came up with the following results:
+
+This means that all 5 of these samples get classified as NC since they have more NC votes than C votes.
+Here are the samples in tthe out-of-bag dataset from the very first random tree in the list:
+
+Here is the confusion matrix that my program gave me when running the above out-of-bag dataset through the classifier:
+
+Here are the computed metrics from the above confusion matrix:
+
+Discussion:
+It seems to me that given an n value of only 38 = sqrt(1410), the results become pretty abysmal. The above test case does yeild a high accuracy, but the sensitivity is very low. I think this is because there are so many NC samples in the dataset compared to C samples. Normally, our dataset has a roughly 2:1 ratio of NC samples to C samples, whereas this particular sample is more like 3:1 (40:12), which means that it can achieve a high accuracy (76.9%) by just classifying all samples as NC.
+My intuition tells me that a n value of 38 is nowhere near sufficient for our given dataset because of one key fact: the VAST majority of the features only have 2 or 3 samples that have them. Thinking all the way back to Activity 2 with the plot of samples per feature, almost all of the dots appeared in the 2-3 range. Given this fact, I think the decision trees need to be given a larger sample size of random features to choose from to allow for greater accuracy.
+I ran some additinal tests where I tweaked the n parameter, and found that this would increase the sensitivity value. Keeping the same random seeds and classification set to avoid too much variability, setting n to 200 led to an additional 2 samples being transformed from false negatives to true positives, which meant an accuracy of 82.69% and sensitivity of 25%. Increasing n further to 500 yeilded the same results. These results are at least somewhat better than guessing all samples as NC, which is what leads me to believe that n = 38 is simly not enough features given our specific dataset and its charicteristics.
+ 
+
+Thank you,
+
+Ethan Dowalter
